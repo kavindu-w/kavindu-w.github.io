@@ -2,94 +2,105 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import leaf from "../../Assets/Projects/leaf.png";
-import emotion from "../../Assets/Projects/emotion.png";
-import editor from "../../Assets/Projects/codeEditor.png";
-import chatify from "../../Assets/Projects/chatify.png";
-import suicide from "../../Assets/Projects/suicide.png";
-import bitsOfCode from "../../Assets/Projects/blog.png";
+import busprj from "../../Assets/Projects/busprj.png";
+import teddybear from "../../Assets/Projects/teddybear.png";
+import attrition from "../../Assets/Projects/attrition.png";
+import dasboard from "../../Assets/Projects/dashboard.jpg";
+import mail from "../../Assets/Projects/mail.jpg";
+import cpu from "../../Assets/Projects/cpu.jpg";
 
 function Projects() {
   return (
     <Container fluid className="project-section">
-      <Particle />
       <Container>
         <h1 className="project-heading">
           My Recent <strong className="purple">Works </strong>
         </h1>
         <p style={{ color: "white" }}>
-          Here are a few projects I've worked on recently.
+          {/* Here are a few projects I've worked on recently. */}
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={chatify}
+              imgPath={busprj}
               isBlog={false}
-              title="Chatify"
-              description="Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages."
-              ghLink="https://github.com/soumyajit4419/Chatify"
-              demoLink="https://chatify-49.web.app/"
+              title="Bus Arrival Time Prediction App"
+              p1="● Optimized passenger experiences and satisfaction by delivering precise arrival time"
+              p2="● Enhanced state-of-the-art machine learning models for improved accuracy, achieving a 0%
+              misclassification rate when classifying bus stop types as either brief, moderate, or prolonged"
+              p3="● Automated the extraction of 15 crucial topological features and crafted a dashboard for streamlined
+              data visualization and management."
+              demoButtonName="Development Milestone Presentation"
+              demoLink="https://www.canva.com/design/DAFrS80anvg/1F-LTIis4lfpM7_b6b4J7A/view?utm_content=DAFrS80anvg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink"
+              techStack="Python, MySql, R Shiny"
             />
           </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={bitsOfCode}
+              imgPath={teddybear}
               isBlog={false}
-              title="Bits-0f-C0de"
-              description="My personal blog page build with Next.js and Tailwind Css which takes the content from makdown files and renders it using Next.js. Supports dark mode and easy to write blogs using markdown."
-              ghLink="https://github.com/soumyajit4419/Bits-0f-C0de"
-              demoLink="https://blogs.soumya-jit.tech/"
+              title="E-Commerce Platform - DBMS Project"
+              p1="● Created an online shopping website in comparison to Amazon, with a custom backend from scratch
+              "
+              ghLink="https://github.com/joelsathi/DBMS-project"
+              techStack=" MySql, FastAPI - Python, Node, Vite - TypeScript"
             />
           </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={editor}
+              imgPath={attrition}
               isBlog={false}
-              title="Editor.io"
-              description="Online code and markdown editor build with react.js. Online Editor which supports html, css, and js code with instant view of website. Online markdown editor for building README file which supports GFM, Custom Html tags with toolbar and instant preview.Both the editor supports auto save of work using Local Storage"
-              ghLink="https://github.com/soumyajit4419/Editor.io"
-              demoLink="https://editor.soumya-jit.tech/"              
+              title="Employee Attrition Analysis Project"
+              p1="● Empowered management decision-making on employee retention at Marvelous Construction by
+              identifying four key areas of insights influencing employee attrition
+              "
+              ghLink="https://github.com/akw2000/Employee-Attrition-Analysis-Solo-Project"
+              techStack="Power BI, Tableau, Python (NumPy, Pandas, Scikit-learn, Seaborn"
             />
           </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={leaf}
+              imgPath={dasboard}
               isBlog={false}
-              title="Plant AI"
-              description="Used the plant disease dataset from Kaggle and trained a image classifer model using 'PyTorch' framework using CNN and Transfer Learning with 38 classes of various plant leaves. The model was successfully able to detect diseased and healthy leaves of 14 unique plants. I was able to achieve an accuracy of 98% by using Resnet34 pretrained model."
-              ghLink="https://github.com/soumyajit4419/Plant_AI"
-              demoLink="https://plant49-ai.herokuapp.com/"
+              title="Kickstarter Technology Projects Dashboard"
+              p1="● Developed an insightful dashboard by employing various data visualization techniques, condensing
+              16 technology subcategories into five informative charts"
+              ghLink="https://github.com/akw2000/Kickstarter-Technology-Projects-Dashboard"
+              techStack="Power BI, Tableau"
             />
           </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={suicide}
+              imgPath={mail}
               isBlog={false}
-              title="Ai For Social Good"
-              description="Using 'Natural Launguage Processing' for the detection of suicide-related posts and user's suicide ideation in cyberspace  and thus helping in sucide prevention."
-              ghLink="https://github.com/soumyajit4419/AI_For_Social_Good"
-              // demoLink="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" <--------Please include a demo link here
+              title="Email Client App"
+              p1="● Sending emails, recipient list management, and self-triggered birthday messages"
+              p2="● Email object serialization, daily reports generation, utilized OOP principles and design patterns"
+              ghLink="https://github.com/akw2000/Email-Client-Project"
+              techStack="Java"
             />
           </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={emotion}
+              imgPath={cpu}
               isBlog={false}
-              title="Face Recognition and Emotion Detection"
-              description="Trained a CNN classifier using 'FER-2013 dataset' with Keras and tensorflow backened. The classifier sucessfully predicted the various types of emotions of human. And the highest accuracy obtained with the model was 60.1%.
-              Then used Open-CV to detect the face in an image and then pass the face to the classifer to predict the emotion of a person."
-              ghLink="https://github.com/soumyajit4419/Face_And_Emotion_Detection"
-              // demoLink="https://blogs.soumya-jit.tech/"      <--------Please include a demo link here 
+              title="8-bit Nano Processor Design Project"
+              p1="●8-bit register support, 6+ instructions support, optimized component usage reduction from 268 to 62"
+              ghLink="https://github.com/akw2000/Nano-Processor-Design-Project"
+              techStack="Vivado Xilinx s/w, VHDL-very high-speed IC h/w description language"
             />
           </Col>
         </Row>
       </Container>
+      <Particle />
+
     </Container>
+
   );
 }
 

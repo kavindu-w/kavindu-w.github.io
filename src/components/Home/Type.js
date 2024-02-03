@@ -6,14 +6,16 @@ function Type() {
     <Typewriter
       options={{
         strings: [
-          "Software Developer",
-          "Freelancer",
-          "MERN Stack Developer",
-          "Open Source Contributor",
+          "Computer Science & Engineering Undergraduate",
+          "Specializing in Data Science",
+          "Passionate pianist",
         ],
         autoStart: true,
         loop: true,
-        deleteSpeed: 50,
+        delay: 75,   // Set a delay of 75 milliseconds between each character
+        deleteSpeed: 60,  // Set the delete speed to 50 milliseconds
+        cursor: "_",  // Set the cursor symbol to underscore (_)
+      
       }}
     />
   );

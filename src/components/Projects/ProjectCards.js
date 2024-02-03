@@ -9,14 +9,27 @@ function ProjectCards(props) {
     <Card className="project-card-view">
       <Card.Img variant="top" src={props.imgPath} alt="card-img" />
       <Card.Body>
-        <Card.Title>{props.title}</Card.Title>
+        <Card.Title><strong className="purple">{props.title} </strong></Card.Title>
         <Card.Text style={{ textAlign: "justify" }}>
-          {props.description}
+          {props.p1}
         </Card.Text>
-        <Button variant="primary" href={props.ghLink} target="_blank">
-          <BsGithub /> &nbsp;
-          {props.isBlog ? "Blog" : "GitHub"}
-        </Button>
+        <Card.Text style={{ textAlign: "justify" }}>
+          {props.p2}
+        </Card.Text>
+        <Card.Text style={{ textAlign: "justify" }}>
+          {props.p3}
+        </Card.Text>
+        <Card.Text style={{ textAlign: "center" }}>
+          <strong >Technologies Used:</strong> <strong className="purple">{props.techStack}</strong>
+        </Card.Text>
+        {props.ghLink && (
+
+          <Button variant="primary" href={props.ghLink} target="_blank">
+            <BsGithub /> &nbsp;
+            {props.isBlog ? "Blog" : "GitHub"}
+          </Button>
+        )}
+
         {"\n"}
         {"\n"}
 
@@ -27,10 +40,9 @@ function ProjectCards(props) {
             variant="primary"
             href={props.demoLink}
             target="_blank"
-            style={{ marginLeft: "10px" }}
           >
             <CgWebsite /> &nbsp;
-            {"Demo"}
+            {props.demoButtonName}
           </Button>
         )}
       </Card.Body>
