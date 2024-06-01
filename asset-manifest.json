@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "//kavindu-w.github.io/static/css/main.0276df26.css",
-    "main.js": "//kavindu-w.github.io/static/js/main.8b4ad137.js",
+    "main.js": "//kavindu-w.github.io/static/js/main.a9986950.js",
     "static/js/415.4d6acbeb.chunk.js": "//kavindu-w.github.io/static/js/415.4d6acbeb.chunk.js",
     "static/js/787.1ed0c42c.chunk.js": "//kavindu-w.github.io/static/js/787.1ed0c42c.chunk.js",
     "static/media/mail.jpg": "//kavindu-w.github.io/static/media/mail.4a0d42d4023b87a4e1c8.jpg",
@@ -15,12 +15,12 @@
     "static/media/logo.jpeg": "//kavindu-w.github.io/static/media/logo.43d017ab3ccda3cff903.jpeg",
     "index.html": "//kavindu-w.github.io/index.html",
     "main.0276df26.css.map": "//kavindu-w.github.io/static/css/main.0276df26.css.map",
-    "main.8b4ad137.js.map": "//kavindu-w.github.io/static/js/main.8b4ad137.js.map",
+    "main.a9986950.js.map": "//kavindu-w.github.io/static/js/main.a9986950.js.map",
     "415.4d6acbeb.chunk.js.map": "//kavindu-w.github.io/static/js/415.4d6acbeb.chunk.js.map",
     "787.1ed0c42c.chunk.js.map": "//kavindu-w.github.io/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0276df26.css",
-    "static/js/main.8b4ad137.js"
+    "static/js/main.a9986950.js"
   ]
 }
