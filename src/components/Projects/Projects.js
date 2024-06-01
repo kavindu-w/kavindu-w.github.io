@@ -56,7 +56,7 @@ function Projects() {
               p1="● Empowered management decision-making on employee retention at Marvelous Construction by
               identifying four key areas of insights influencing employee attrition
               "
-              ghLink="https://github.com/akw2000/Employee-Attrition-Analysis-Solo-Project"
+              ghLink="https://github.com/kavindu-w/Employee-Attrition-Analysis-Solo-Project"
               techStack="Power BI, Tableau, Python (NumPy, Pandas, Scikit-learn, Seaborn"
             />
           </Col>
@@ -68,7 +68,7 @@ function Projects() {
               title="Kickstarter Technology Projects Dashboard"
               p1="● Developed an insightful dashboard by employing various data visualization techniques, condensing
               16 technology subcategories into five informative charts"
-              ghLink="https://github.com/akw2000/Kickstarter-Technology-Projects-Dashboard"
+              ghLink="https://github.com/kavindu-w/Kickstarter-Technology-Projects-Dashboard"
               techStack="Power BI, Tableau"
             />
           </Col>
@@ -80,7 +80,7 @@ function Projects() {
               title="Email Client App"
               p1="● Sending emails, recipient list management, and self-triggered birthday messages"
               p2="● Email object serialization, daily reports generation, utilized OOP principles and design patterns"
-              ghLink="https://github.com/akw2000/Email-Client-Project"
+              ghLink="https://github.com/kavindu-w/Email-Client-Project"
               techStack="Java"
             />
           </Col>
@@ -91,7 +91,7 @@ function Projects() {
               isBlog={false}
               title="8-bit Nano Processor Design Project"
               p1="●8-bit register support, 6+ instructions support, optimized component usage reduction from 268 to 62"
-              ghLink="https://github.com/akw2000/Nano-Processor-Design-Project"
+              ghLink="https://github.com/kavindu-w/Nano-Processor-Design-Project"
               techStack="Vivado Xilinx s/w, VHDL-very high-speed IC h/w description language"
             />
           </Col>

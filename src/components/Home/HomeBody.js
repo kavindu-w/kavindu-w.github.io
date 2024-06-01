@@ -79,10 +79,10 @@ function HomeBody() {
         </Row>
         <Row className="justify-content-between">
           <Col md={6} className="home-about-description">
-            <img alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=akw2000&show_icons=true&theme=github_dark" />
+            <img alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=kavindu-w&show_icons=true&theme=github_dark" />
           </Col>
           <Col md={5} className="home-about-description">
-            <img alt="GitHub stats-Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=akw2000&theme=github_dark&langs_count=8&layout=compact" />
+            <img alt="GitHub stats-Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=kavindu-w&theme=github_dark&langs_count=8&layout=compact" />
           </Col>
         </Row>
 
@@ -98,7 +98,7 @@ function HomeBody() {
 
               <li className="social-icons">
                 <a
-                  href="https://github.com/akw2000"
+                  href="https://github.com/kavindu-w"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -128,7 +128,7 @@ function HomeBody() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://twitter.com/akw200021"
+                  href="https://x.com/kavindu_warna"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -148,7 +148,7 @@ function HomeBody() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.instagram.com/_akw2000_/"
+                  href="https://www.instagram.com/kavindu_warnakulasuriya_/"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"

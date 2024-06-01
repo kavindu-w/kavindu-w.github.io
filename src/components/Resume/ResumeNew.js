@@ -10,8 +10,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const resumeLink =
   // "https://drive.google.com/file/d/1XKDGbuOrTQ826mg9PGOGfwHGGH-hITnq/view?usp=share_link"
-  // "https://github.com/akw2000/akw2000.github.io/raw/master/src/Assets/Arachchige_Kavindu_Warnakulasuirya_CV.pdf"
-  "https://raw.githubusercontent.com/akw2000/akw2000.github.io/master/src/Assets/Arachchige_Kavindu_Warnakulasuirya_CV.pdf";
+  // "https://github.com/kavindu-w/kavindu-w.github.io/raw/master/src/Assets/Arachchige_Kavindu_Warnakulasuirya_CV.pdf"
+  "https://raw.githubusercontent.com/kavindu-w/kavindu-w.github.io/master/src/Assets/Arachchige_Kavindu_Warnakulasuirya_CV.pdf";
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
   const [numPages, setNumPages] = useState(null);
