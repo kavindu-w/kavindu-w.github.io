@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "//kavindu-w.github.io/static/css/main.0276df26.css",
-    "main.js": "//kavindu-w.github.io/static/js/main.a9986950.js",
-    "static/js/415.4d6acbeb.chunk.js": "//kavindu-w.github.io/static/js/415.4d6acbeb.chunk.js",
-    "static/js/787.1ed0c42c.chunk.js": "//kavindu-w.github.io/static/js/787.1ed0c42c.chunk.js",
+    "main.css": "//kavindu-w.github.io/static/css/main.ea371938.css",
+    "main.js": "//kavindu-w.github.io/static/js/main.097bf11f.js",
+    "static/js/453.ac9b7e2a.chunk.js": "//kavindu-w.github.io/static/js/453.ac9b7e2a.chunk.js",
+    "static/media/rounded pic.drawio.png": "//kavindu-w.github.io/static/media/rounded pic.drawio.5fc8cb4540cad26bce21.png",
     "static/media/mail.jpg": "//kavindu-w.github.io/static/media/mail.4a0d42d4023b87a4e1c8.jpg",
-    "static/media/myimage2-removebg.png": "//kavindu-w.github.io/static/media/myimage2-removebg.c0a68a2b382463863bb8.png",
     "static/media/busprj.png": "//kavindu-w.github.io/static/media/busprj.2ee36f0118adcfa1312a.png",
     "static/media/teddybear.png": "//kavindu-w.github.io/static/media/teddybear.eda6faded704595c17e7.png",
+    "static/media/fyp.png": "//kavindu-w.github.io/static/media/fyp.aa60ebdff147244f56cf.png",
     "static/media/cpu.jpg": "//kavindu-w.github.io/static/media/cpu.c00046e8aa2ae630433f.jpg",
     "static/media/dashboard.jpg": "//kavindu-w.github.io/static/media/dashboard.ec97890b12f7cef10d8a.jpg",
+    "static/media/churn.png": "//kavindu-w.github.io/static/media/churn.4866c46de6a684484fe3.png",
     "static/media/about.png": "//kavindu-w.github.io/static/media/about.aee0f771fbfc1e7b8fa8.png",
     "static/media/attrition.png": "//kavindu-w.github.io/static/media/attrition.246f996bb6b9bf3e4a92.png",
+    "static/media/caesarean.png": "//kavindu-w.github.io/static/media/caesarean.9007153c4246bb22d2de.png",
     "static/media/logo.jpeg": "//kavindu-w.github.io/static/media/logo.43d017ab3ccda3cff903.jpeg",
     "index.html": "//kavindu-w.github.io/index.html",
-    "main.0276df26.css.map": "//kavindu-w.github.io/static/css/main.0276df26.css.map",
-    "main.a9986950.js.map": "//kavindu-w.github.io/static/js/main.a9986950.js.map",
-    "415.4d6acbeb.chunk.js.map": "//kavindu-w.github.io/static/js/415.4d6acbeb.chunk.js.map",
-    "787.1ed0c42c.chunk.js.map": "//kavindu-w.github.io/static/js/787.1ed0c42c.chunk.js.map"
+    "main.ea371938.css.map": "//kavindu-w.github.io/static/css/main.ea371938.css.map",
+    "main.097bf11f.js.map": "//kavindu-w.github.io/static/js/main.097bf11f.js.map",
+    "453.ac9b7e2a.chunk.js.map": "//kavindu-w.github.io/static/js/453.ac9b7e2a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0276df26.css",
-    "static/js/main.a9986950.js"
+    "static/css/main.ea371938.css",
+    "static/js/main.097bf11f.js"
   ]
 }
