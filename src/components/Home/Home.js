@@ -1,6 +1,5 @@
-import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import homeLogo from "../../Assets/myimage2-removebg.png";
+import homeLogo from "../../Assets/rounded pic.drawio.png";
 import Particle from "../Particle";
 import HomeBody from "./HomeBody";
 import Type from "./Type";
@@ -11,15 +10,15 @@ function Home() {
       <Container fluid className="home-section" id="home">
         <Container className="home-content" >
           <Row>
-            <Col md={8} className="home-header">
-              <h1 style={{ paddingBottom: 15 }} className="heading">
+            <Col md={8} className="home-header" style={{ textAlign: "left" }}>
+              <h1 style={{ paddingBottom: 15, margin: 0 }} className="heading">
                 Hello World!{" "}
                 <span className="wave" role="img" aria-labelledby="wave">
                   👋🏻
                 </span>
               </h1>
 
-              <h1 className="heading-name">
+              <h1 className="heading-name" style={{ margin: 5 }}>
                 I'm
                 <strong className="main-name"> Kavindu Warnakulasuirya</strong>
               </h1>
@@ -30,16 +29,16 @@ function Home() {
                     akw:~$
                   </span>
                 </h1>
-                <Type />
+                  <Type />
               </div>
             </Col>
 
-            <Col md={4} style={{ paddingBottom: 20, position: "relative" }}>
+            <Col md={4} style={{ paddingBottom: 0, position: "relative" }}>
               <img
                 src={homeLogo}
                 alt="home pic"
                 className="img-fluid"
-                style={{ maxHeight: "450px", }} 
+                style={{ maxHeight: "450px", }}
               />
             </Col>
           </Row>
@@ -47,7 +46,6 @@ function Home() {
       </Container>
       <HomeBody />
       <Particle />
-
     </section>
   );
 }

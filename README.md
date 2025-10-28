@@ -1,8 +1,8 @@
 <h2 align="center">
-  My personal portfolio <br/>
+  My Personal Portfolio <br/>
 </h2>
 
-My portfolio which features some of my github projects as well as my resume and technical skills.<br/>
+My portfolio which features projects I have worked on.<br/>
 
 Credits for the template provided by [Soumyajit4419](https://github.com/soumyajit4419/Portfolio)
 

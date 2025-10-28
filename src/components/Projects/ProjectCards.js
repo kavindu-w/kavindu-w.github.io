@@ -1,8 +1,7 @@
-import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { CgWebsite } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
+import { CgWebsite, CgPlayList } from "react-icons/cg"; 
 
 function ProjectCards(props) {
   return (
@@ -19,6 +18,11 @@ function ProjectCards(props) {
         <Card.Text style={{ textAlign: "justify" }}>
           {props.p3}
         </Card.Text>
+        {props.p4 && (
+          <Card.Text style={{ textAlign: "justify" }}>
+            {props.p4}
+          </Card.Text>
+        )}
         <Card.Text style={{ textAlign: "center" }}>
           <strong >Technologies Used:</strong> <strong className="purple">{props.techStack}</strong>
         </Card.Text>
@@ -44,6 +48,20 @@ function ProjectCards(props) {
             <CgWebsite /> &nbsp;
             {props.demoButtonName}
           </Button>
+        )}
+
+        {props.demoLink2 && (
+          <>
+            {"\n"}
+            <Button
+              variant="primary"
+              href={props.demoLink2}
+              target="_blank"
+            >
+              <CgPlayList /> &nbsp;
+              {props.demoButtonName2}
+            </Button>
+          </>
         )}
       </Card.Body>
     </Card>

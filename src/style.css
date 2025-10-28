@@ -11,7 +11,7 @@ html {
     rgba(12, 10, 22, 0.863)
   );
 
-  --imp-text-color: #3333ff;
+  --imp-text-color: #6060f9ff;
 }
 
 .purple {
@@ -286,12 +286,12 @@ button:focus {
 
 .Typewriter__wrapper {
   font-size: 2.2em !important;
-  color: #3d0099 !important;
+  color: #955fe7ff !important;
   font-weight: 600 !important;
 }
 .Typewriter__cursor {
   font-size: 2.4em !important;
-  color: #3d0099 !important;
+  color: #caa6ff !important;
 }
 
 @media (max-width: 767px) {
@@ -332,7 +332,7 @@ button:focus {
 
 .home-about-body {
   padding-top: 50px;
-  font-size: 1.2em !important;
+  font-size: 1.6em !important;
   text-align: left;
 }
 

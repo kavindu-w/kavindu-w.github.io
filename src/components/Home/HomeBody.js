@@ -1,6 +1,4 @@
-import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-// import Tilt from "react-parallax-tilt";
 import laptopImg from "../../Assets/about.png";
 import { TiPointOfInterest } from "react-icons/ti";
 import Github from "./Github";
@@ -25,18 +23,15 @@ function HomeBody() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              <span className="purple">About myself</span>
+              <span className="purple">README 😁</span>
             </h1>
             <p className="home-about-body">
-              👋🏾 Hi Everyone, I'm <span className="purple">Arachchige Kavindu Warnakulasuirya</span>, and I'm from Seeduwa, Sri Lanka.
+              👋🏾 Hi Everyone, I am <span style={{ color: "#caa6ff" }}> Kavindu Warnakulasuirya</span>, and I am from <br />Seeduwa, Sri Lanka.
               <br />
               <br />
-              🎓 I’m currently an undergraduate at the <span className="purple">University of Moratuwa </span>
-              in the <span className="purple">Computer Science & Engineering department </span>
-              specializing in <span className="purple">Data Science</span>.
+              🎓 I am a <span style={{ color: "#caa6ff" }}>Computer Science & Engineering</span> graduate, specialised in <span style={{ color: "#caa6ff" }}>Data Science & Engineering</span> from the <span style={{ color: "#caa6ff" }}>University of Moratuwa</span>.
               <br />
-              <br />😊 I am enthusiastic and passionate about data science and
-              mathematics.
+              <br />😊 I am enthusiastic and passionate about research on NLP <br />(especially low-resource) and LLM Agents.
               <br />
               <br />
               Apart from coding, some of my interests and passions are:
@@ -54,7 +49,7 @@ function HomeBody() {
 
               <p style={{ color: "rgb(155 126 172)" }}>
                 "Do not worry about the things that are out of
-                your control. Simply adapt and continue!"{" "}
+                your control. <br />Simply adapt and continue!"{" "}
               </p>
               <footer className="blockquote-footer">Anonymous</footer>
             </p>
@@ -86,11 +81,6 @@ function HomeBody() {
           </Col>
         </Row>
 
-
-
-
-
-
         <Row>
           <Col md={12} className="home-about-social">
             <h1><span className="purple">Connect with me</span> 🤝</h1>
@@ -116,7 +106,7 @@ function HomeBody() {
                   <FaLinkedinIn />
                 </a>
               </li>
-              <li className="social-icons">
+              {/* <li className="social-icons">
                 <a
                   href="https://kaggle.com/kavinduw"
                   target="_blank"
@@ -125,7 +115,7 @@ function HomeBody() {
                 >
                   <FaKaggle />
                 </a>
-              </li>
+              </li> */}
               <li className="social-icons">
                 <a
                   href="https://x.com/kavindu_warna"
@@ -163,4 +153,5 @@ function HomeBody() {
     </Container>
   );
 }
+
 export default HomeBody;

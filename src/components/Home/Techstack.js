@@ -35,9 +35,9 @@ function Techstack() {
       <Col xs={4} md={2} className="tech-icons">
         <OverlayTrigger
           placement="bottom"
-          overlay={<Tooltip id="tooltip-oracle"  className="show" style={{ color: "white" }}>Oracle</Tooltip>}
+          overlay={<Tooltip id="tooltip-oracle" className="show" style={{ color: "white" }}>Oracle</Tooltip>}
         >
-        <span><SiOracle /></span>
+          <span><SiOracle /></span>
         </OverlayTrigger>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
@@ -133,7 +133,7 @@ function Techstack() {
           placement="bottom"
           overlay={<Tooltip id="tooltip-gnubash" style={{ color: "white" }}>GNU Bash</Tooltip>}
         >
-         <span> <SiGnubash /></span>
+          <span> <SiGnubash /></span>
         </OverlayTrigger>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
@@ -141,7 +141,7 @@ function Techstack() {
           placement="bottom"
           overlay={<Tooltip id="tooltip-visualstudiocode" style={{ color: "white" }}>Visual Studio Code</Tooltip>}
         >
-         <span> <SiVisualstudiocode /></span>
+          <span> <SiVisualstudiocode /></span>
         </OverlayTrigger>
       </Col>
     </Row>

@@ -11,7 +11,7 @@ function Footer() {
           <h3>Copyright © {year} akw</h3>
         </Col>
         <Col md="6" className="footer-copywright">
-          <h3>Designed by Arachchige Kavindu Warnakulasuirya</h3>
+          <h3>Designed by Kavindu Warnakulasuirya</h3>
         </Col>
       </Row>
     </Container>
