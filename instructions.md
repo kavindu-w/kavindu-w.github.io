@@ -16,6 +16,7 @@ npm install gh-pages --save-dev
 ```
 
 # commit changes as "version* deployed"
+to publish the site after changes
 ```bash
-npm run deploy (to publish the site after changes)
+npm run deploy 
 ```
