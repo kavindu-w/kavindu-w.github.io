@@ -12,7 +12,7 @@ const WORKSPACE = "kavindu-testers-team-1628";
 
 // Initialize the client
 const client = new Counter({
-  workspace: WORKSPACE,  // Your workspace name
+    workspace: WORKSPACE,  // Your workspace name
 });
 /* ------------------------ CUSTOM COUNTER HOOK (SDK VERSION) ------------------------ */
 function useCounter(key) {
@@ -67,19 +67,15 @@ function Resources() {
                 for suggestions, additions, or corrections!
                 <br />
                 <strong style={{ color: "#caa6ff" }}>
-                    <>
-                        {totalLikes > 0 && (
-                            <span>{totalLikes} total likes 👍</span>
-                        )}
-
-                        {totalDownloads > 0 && (
-                            <>
-                                {totalLikes > 0 && " | "}
-                                <span>{totalDownloads} total downloads 📥</span>
-                            </>
-                        )}
-                    </>
+                    {Number(totalLikes) > 0 || Number(totalDownloads) > 0 ? (
+                        <>
+                            {Number(totalLikes) > 0 && <span>{totalLikes} total likes 👍</span>}
+                            {Number(totalLikes) > 0 && Number(totalDownloads) > 0 && " | "}
+                            {Number(totalDownloads) > 0 && <span>{totalDownloads} total downloads 📥</span>}
+                        </>
+                    ) : null}
                 </strong>
+
             </p>
 
             <Accordion alwaysOpen className="custom-accordion">

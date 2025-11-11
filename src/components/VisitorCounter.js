@@ -6,7 +6,7 @@ const COUNTER = "first-counter-1628";
 
 // Initialize the client
 const client = new Counter({
-  workspace: WORKSPACE,  // Your workspace name
+    workspace: WORKSPACE,  // Your workspace name
 });
 function VisitorCounter({ className, style }) {
     const [count, setCount] = useState(null);
@@ -51,10 +51,10 @@ function VisitorCounter({ className, style }) {
                 <small style={{ color: "rgba(255,255,255,0.9)" }}>{error}</small>
             ) : (
                 <small style={{ color: "rgba(255,255,255,0.9)" }}>
-                        
-                        {count > 0 && (
-                            <span>Intriguing Visitors: {count === null ? "…" : count}</span>
-                        )}
+
+                    {Number(count) > 0 && (
+                        <span>Intriguing Visitors: {count === null ? "…" : count}</span>
+                    )}
                 </small>
             )}
         </div>
