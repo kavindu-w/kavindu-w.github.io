@@ -1,69 +1,55 @@
 import React, { useEffect, useState } from "react";
 
-/*
-    Simple visitor counter using CountAPI (https://countapi.xyz).
-    It fetches current value on mount, and when user clicks anywhere on the page
-    for the first time in this browser session it will increment the counter.
-    The counter key/namespace are safe to change if you want another counter.
-*/
-
-const NAMESPACE = "kavindu-w-github-io"; // change if you want a different counter
-const KEY = "visitor_count";
+const WORKSPACE = "kavindu-testers-team-1628";
+const COUNTER_NAME = "first-counter-1628";
+const BASE_URL = "https://api.counterapi.dev/v2";
 
 function VisitorCounter({ className, style }) {
     const [count, setCount] = useState(null);
     const [error, setError] = useState(null);
 
+    const fetchCount = async () => {
+        try {
+            const res = await fetch(`${BASE_URL}/${WORKSPACE}/${COUNTER_NAME}`, { cache: "no-store" });
+            const json = await res.json();
+            setCount(json.data.up_count);
+        } catch (err) {
+            console.error("GET error:", err);
+            setError("Counter unavailable");
+        }
+    };
+
+    const incrementCount = async () => {
+        try {
+            const res = await fetch(`${BASE_URL}/${WORKSPACE}/${COUNTER_NAME}/up`, { cache: "no-store" });
+            const json = await res.json();
+            setCount(json.data.up_count); // <- important: use json.data.up_count
+            // console.log("Count incremented to:", json);
+        } catch (err) {
+            console.error("UP error:", err);
+        }
+    };
+
     useEffect(() => {
-        let mounted = true;
+        fetchCount();
 
-        // get current value (doesn't increment)
-        fetch(`https://api.countapi.xyz/get/${NAMESPACE}/${KEY}`)
-            .then((r) => {
-                if (!r.ok) throw new Error("no value");
-                return r.json();
-            })
-            .then((data) => {
-                if (mounted) setCount(data.value ?? 0);
-            })
-            .catch(() => {
-                // if not found or other error, show 0
-                if (mounted) setCount(0);
-            });
-
-        // Handler to increment once per session
-        const handleFirstClick = () => {
+        const handleClick = async () => {
+            // Ensure only once per session
             try {
+                // sessionStorage.removeItem("site_visited"); NOTE for debugging (otherwise cannot test multiple times in one session)
+
+                console.log("Checking session storage for site_visited", sessionStorage.getItem("site_visited"));
+
                 if (sessionStorage.getItem("site_visited")) return;
-            } catch (e) {
-                // sessionStorage could be disabled, still attempt to increment but avoid repeated hits
-            }
+                sessionStorage.setItem("site_visited", "1");
+            } catch { }
 
-            // increment (hit) endpoint - will create key if missing
-            fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`)
-                .then((r) => r.json())
-                .then((data) => {
-                    if (mounted) setCount(data.value ?? count);
-                    try {
-                        sessionStorage.setItem("site_visited", "1");
-                    } catch (e) { }
-                })
-                .catch((err) => {
-                    if (mounted) setError("Counter unavailable");
-                    console.error("CountAPI error:", err);
-                });
-
-            // remove listener after first increment attempt
-            document.removeEventListener("click", handleFirstClick);
+            await incrementCount(); // wait for API response
         };
 
-        document.addEventListener("click", handleFirstClick, { once: true });
-
-        return () => {
-            mounted = false;
-            document.removeEventListener("click", handleFirstClick);
-        };
-    }, []); // run once
+        document.addEventListener("click", handleClick);
+        return () => document.removeEventListener("click", handleClick);
+    }, []);
 
     return (
         <div className={className} style={style}>
@@ -71,7 +57,7 @@ function VisitorCounter({ className, style }) {
                 <small style={{ color: "rgba(255,255,255,0.9)" }}>{error}</small>
             ) : (
                 <small style={{ color: "rgba(255,255,255,0.9)" }}>
-                    Intriguing Vistors: {count === null ? "…" : count}
+                    Intriguing Visitors: {count === null ? "…" : count}
                 </small>
             )}
         </div>
