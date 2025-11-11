@@ -1,50 +1,44 @@
+// filepath: src/components/VisitorCounter.js
 import React, { useEffect, useState } from "react";
-
+import { Counter } from 'counterapi';
 const WORKSPACE = "kavindu-testers-team-1628";
-const COUNTER_NAME = "first-counter-1628";
-const BASE_URL = "https://api.counterapi.dev/v2";
+const COUNTER = "first-counter-1628";
 
+// Initialize the client
+const client = new Counter({
+  workspace: WORKSPACE,  // Your workspace name
+});
 function VisitorCounter({ className, style }) {
     const [count, setCount] = useState(null);
     const [error, setError] = useState(null);
 
-    const fetchCount = async () => {
+    const loadCount = async () => {
         try {
-            const res = await fetch(`${BASE_URL}/${WORKSPACE}/${COUNTER_NAME}`, { cache: "no-store" });
-            const json = await res.json();
-            setCount(json.data.up_count);
+            const res = await client.get(COUNTER);
+            setCount(res.data.up_count);
         } catch (err) {
             console.error("GET error:", err);
-            setError("Counter unavailable");
+            setError("");
         }
     };
 
-    const incrementCount = async () => {
+    const incrementOncePerSession = async () => {
         try {
-            const res = await fetch(`${BASE_URL}/${WORKSPACE}/${COUNTER_NAME}/up`, { cache: "no-store" });
-            const json = await res.json();
-            setCount(json.data.up_count); // <- important: use json.data.up_count
-            // console.log("Count incremented to:", json);
+            if (sessionStorage.getItem("visited")) return;
+            sessionStorage.setItem("visited", "1");
+
+            const res = await client.up(COUNTER);
+            setCount(res.data.up_count);
         } catch (err) {
             console.error("UP error:", err);
         }
     };
 
     useEffect(() => {
-        fetchCount();
+        loadCount();
 
-        const handleClick = async () => {
-            // Ensure only once per session
-            try {
-                // sessionStorage.removeItem("site_visited"); NOTE for debugging (otherwise cannot test multiple times in one session)
-
-                console.log("Checking session storage for site_visited", sessionStorage.getItem("site_visited"));
-
-                if (sessionStorage.getItem("site_visited")) return;
-                sessionStorage.setItem("site_visited", "1");
-            } catch { }
-
-            await incrementCount(); // wait for API response
+        const handleClick = () => {
+            incrementOncePerSession();
         };
 
         document.addEventListener("click", handleClick);
@@ -57,7 +51,10 @@ function VisitorCounter({ className, style }) {
                 <small style={{ color: "rgba(255,255,255,0.9)" }}>{error}</small>
             ) : (
                 <small style={{ color: "rgba(255,255,255,0.9)" }}>
-                    Intriguing Visitors: {count === null ? "…" : count}
+                        
+                        {count > 0 && (
+                            <span>Intriguing Visitors: {count === null ? "…" : count}</span>
+                        )}
                 </small>
             )}
         </div>

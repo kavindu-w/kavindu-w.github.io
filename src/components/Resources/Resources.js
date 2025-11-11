@@ -1,25 +1,27 @@
 // filepath: src/components/Resources/Resources.js
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button, Accordion } from "react-bootstrap";
 import structuredResources from "../../data/resources";
 import "./Resources.css";
+import { Counter } from 'counterapi';
 
 /* ------------------------ COUNTERAPI V2 CONFIG ------------------------ */
 const DOWNLOAD_COUNTER = "downld";      // global downloads
 const LIKE_COUNTER = "lkes";             // global likes
-const BASE_URL = "https://api.counterapi.dev/v2";
 const WORKSPACE = "kavindu-testers-team-1628";
-/* ------------------------ CUSTOM COUNTER HOOK ------------------------ */
+
+// Initialize the client
+const client = new Counter({
+  workspace: WORKSPACE,  // Your workspace name
+});
+/* ------------------------ CUSTOM COUNTER HOOK (SDK VERSION) ------------------------ */
 function useCounter(key) {
     const [count, setCount] = useState(null);
 
     const fetchCount = async () => {
         try {
-            const res = await fetch(`${BASE_URL}/${WORKSPACE}/${key}`, { cache: "no-store" });
-            const data = await res.json();
-            setCount(data.data.up_count ?? 0);
-            // console.log("CounterAPI GET data:", data);
+            const res = await client.get(key);  // ← SDK method
+            setCount(res.data.up_count ?? 0);
         } catch (err) {
             console.error("CounterAPI GET error:", err);
             setCount(0);
@@ -28,10 +30,10 @@ function useCounter(key) {
 
     const increment = async () => {
         try {
-            const res = await fetch(`${BASE_URL}/${WORKSPACE}/${key}/up`, { cache: "no-store" });
-            const data = await res.json();
-            setCount(data.data.up_count ?? count);
-            return data.data.up_count ?? count;
+            const res = await client.up(key);  // ← SDK method
+            const newValue = res.data.up_count ?? count;
+            setCount(newValue);
+            return newValue;
         } catch (err) {
             console.error("CounterAPI UP error:", err);
             return count;
@@ -65,8 +67,18 @@ function Resources() {
                 for suggestions, additions, or corrections!
                 <br />
                 <strong style={{ color: "#caa6ff" }}>
-                    {totalLikes === null ? "…" : totalLikes} total likes 👍&nbsp;|&nbsp;{" "}
-                    {totalDownloads === null ? "…" : totalDownloads} total downloads 📥
+                    <>
+                        {totalLikes > 0 && (
+                            <span>{totalLikes} total likes 👍</span>
+                        )}
+
+                        {totalDownloads > 0 && (
+                            <>
+                                {totalLikes > 0 && " | "}
+                                <span>{totalDownloads} total downloads 📥</span>
+                            </>
+                        )}
+                    </>
                 </strong>
             </p>
 
