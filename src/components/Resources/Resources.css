@@ -1,0 +1,34 @@
+/* Make accordion match dark theme */
+.custom-accordion .accordion-item {
+    background-color: #0d0d0d; /* dark background */
+    border: 1px solid #333;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.custom-accordion .accordion-header {
+    background-color: #111 !important;
+}
+
+.custom-accordion .accordion-button {
+    background-color: #111 !important;
+    color: #caa6ff !important; /* purple highlight text */
+    font-weight: 600;
+    border: none;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+    background-color: #1a1a1a !important;
+    color: #fff !important;
+    box-shadow: none;
+}
+
+.custom-accordion .accordion-body {
+    background-color: #111;
+    color: white;  /* ★ makes text readable */
+}
+
+/* Remove weird shadow line */
+.custom-accordion .accordion-button:focus {
+    box-shadow: none;
+}
