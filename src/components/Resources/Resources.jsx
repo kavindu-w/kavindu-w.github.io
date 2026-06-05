@@ -54,75 +54,77 @@ function Resources() {
 
   return (
     <Container fluid className="project-section" style={{ paddingTop: 120, minHeight: "calc(100vh - 60px)" }}>
-      <h1 className="project-heading">
-        <strong className="purple">Resources</strong>
-      </h1>
-      <p style={{ color: "white" }}>
-        Study guides, lecture notes, and other materials. Reach out{" "}
-        <a href="mailto:akwarnakulasuriya@gmail.com" style={{ color: "#caa6ff" }}>
-          akwarnakulasuriya@gmail.com
-        </a>{" "}
-        for suggestions, additions, or corrections!
-        <br />
-        <strong style={{ color: "#caa6ff" }}>
-          {Number(totalDownloads) > 0 && <span>{totalDownloads} total downloads 📥</span>}
-        </strong>
-      </p>
+      <Container>
+        <h1 className="project-heading">
+          <strong className="purple">Resources</strong>
+        </h1>
+        <p style={{ color: "white" }}>
+          Study guides, lecture notes, and other materials. Reach out{" "}
+          <a href="mailto:akwarnakulasuriya@gmail.com" style={{ color: "#caa6ff" }}>
+            akwarnakulasuriya@gmail.com
+          </a>{" "}
+          for suggestions, additions, or corrections!
+          <br />
+          <strong style={{ color: "#caa6ff" }}>
+            {Number(totalDownloads) > 0 && <span>{totalDownloads} total downloads 📥</span>}
+          </strong>
+        </p>
 
-      <Accordion alwaysOpen className="custom-accordion accordion-level-1">
-        {structuredResources.map((degree, degIdx) => (
-          <Accordion.Item eventKey={`deg-${degIdx}`} key={degIdx}>
-            <Accordion.Header>
-              <FaGraduationCap className="level-icon" />
-              {degree.title}
-            </Accordion.Header>
-            <Accordion.Body>
-              {degree.notes && (
-                <Row style={{ gap: "1rem" }}>
-                  {degree.notes.map((note) => (
-                    <Col key={note.id} xs={12} md={6} lg={4}>
-                      <NoteCard note={note} hitDownload={hitDownload} setDownloads={setDownloads} />
-                    </Col>
-                  ))}
-                </Row>
-              )}
-              {degree.semesters && (
-                <Accordion alwaysOpen className="custom-accordion accordion-level-2">
-                  {degree.semesters.map((sem, semIdx) => (
-                    <Accordion.Item eventKey={`sem-${degIdx}-${semIdx}`} key={semIdx}>
-                      <Accordion.Header>
-                        <FaLayerGroup className="level-icon" />
-                        {sem.title}
-                      </Accordion.Header>
-                      <Accordion.Body>
-                        <Accordion alwaysOpen className="custom-accordion accordion-level-3">
-                          {sem.modules.map((module, modIdx) => (
-                            <Accordion.Item eventKey={`mod-${degIdx}-${semIdx}-${modIdx}`} key={modIdx}>
-                              <Accordion.Header>
-                                <FaBookOpen className="level-icon" />
-                                {module.title}
-                              </Accordion.Header>
-                              <Accordion.Body>
-                                <Row style={{ gap: "1rem" }}>
-                                  {module.notes.map((note) => (
-                                    <Col key={note.id} xs={12} md={6} lg={4}>
-                                      <NoteCard note={note} hitDownload={hitDownload} setDownloads={setDownloads} />
-                                    </Col>
-                                  ))}
-                                </Row>
-                              </Accordion.Body>
-                            </Accordion.Item>
-                          ))}
-                        </Accordion>
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  ))}
-                </Accordion>
-              )}
-            </Accordion.Body>
-          </Accordion.Item>
-        ))}
-      </Accordion>
+        <Accordion alwaysOpen className="custom-accordion accordion-level-1">
+          {structuredResources.map((degree, degIdx) => (
+            <Accordion.Item eventKey={`deg-${degIdx}`} key={degIdx}>
+              <Accordion.Header>
+                <FaGraduationCap className="level-icon" />
+                {degree.title}
+              </Accordion.Header>
+              <Accordion.Body>
+                {degree.notes && (
+                  <Row style={{ gap: "1rem" }}>
+                    {degree.notes.map((note) => (
+                      <Col key={note.id} xs={12} md={6} lg={4}>
+                        <NoteCard note={note} hitDownload={hitDownload} setDownloads={setDownloads} />
+                      </Col>
+                    ))}
+                  </Row>
+                )}
+                {degree.semesters && (
+                  <Accordion alwaysOpen className="custom-accordion accordion-level-2">
+                    {degree.semesters.map((sem, semIdx) => (
+                      <Accordion.Item eventKey={`sem-${degIdx}-${semIdx}`} key={semIdx}>
+                        <Accordion.Header>
+                          <FaLayerGroup className="level-icon" />
+                          {sem.title}
+                        </Accordion.Header>
+                        <Accordion.Body>
+                          <Accordion alwaysOpen className="custom-accordion accordion-level-3">
+                            {sem.modules.map((module, modIdx) => (
+                              <Accordion.Item eventKey={`mod-${degIdx}-${semIdx}-${modIdx}`} key={modIdx}>
+                                <Accordion.Header>
+                                  <FaBookOpen className="level-icon" />
+                                  {module.title}
+                                </Accordion.Header>
+                                <Accordion.Body>
+                                  <Row style={{ gap: "1rem" }}>
+                                    {module.notes.map((note) => (
+                                      <Col key={note.id} xs={12} md={6} lg={4}>
+                                        <NoteCard note={note} hitDownload={hitDownload} setDownloads={setDownloads} />
+                                      </Col>
+                                    ))}
+                                  </Row>
+                                </Accordion.Body>
+                              </Accordion.Item>
+                            ))}
+                          </Accordion>
+                        </Accordion.Body>
+                      </Accordion.Item>
+                    ))}
+                  </Accordion>
+                )}
+              </Accordion.Body>
+            </Accordion.Item>
+          ))}
+        </Accordion>
+      </Container>
     </Container>
   );
 }
