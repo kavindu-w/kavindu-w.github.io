@@ -1,0 +1,69 @@
+---
+export interface Props {
+  imgPath: string;
+  title: string;
+  p1?: string;
+  p2?: string;
+  p3?: string;
+  p4?: string;
+  techStack?: string;
+  ghLink?: string;
+  paperLink?: string;
+  presentationLink?: string;
+  videoLink?: string;
+  demoLink?: string;
+}
+
+const { imgPath, title, p1, p2, p3, p4, techStack, ghLink, paperLink, presentationLink, videoLink, demoLink } = Astro.props;
+---
+
+<div class="card project-card-view">
+  <img src={imgPath} class="card-img-top" alt={title} loading="lazy" />
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title">
+      <strong class="purple">{title}</strong>
+    </h5>
+    {p1 && <p class="card-text" style="text-align:justify">{p1}</p>}
+    {p2 && <p class="card-text" style="text-align:justify">{p2}</p>}
+    {p3 && <p class="card-text" style="text-align:justify">{p3}</p>}
+    {p4 && <p class="card-text" style="text-align:justify">{p4}</p>}
+    {techStack && (
+      <p class="card-text mt-auto" style="text-align:center">
+        <strong>Technologies Used:</strong>{" "}
+        <strong class="purple">{techStack}</strong>
+      </p>
+    )}
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem">
+      {ghLink && (
+        <a href={ghLink} target="_blank" rel="noreferrer" class="btn btn-primary project-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+          GitHub
+        </a>
+      )}
+      {paperLink && (
+        <a href={paperLink} target="_blank" rel="noreferrer" class="btn btn-primary project-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h5v7h7v9H6zm2-5h8v1H8zm0-3h4v1H8z"/></svg>
+          Paper
+        </a>
+      )}
+      {presentationLink && (
+        <a href={presentationLink} target="_blank" rel="noreferrer" class="btn btn-primary project-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M2 3a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-7.586l2.293 2.293a1 1 0 0 1-1.414 1.414L12 18.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L10.586 18H3a1 1 0 0 1-1-1V3zm2 1v11h16V4H4z"/></svg>
+          Slides
+        </a>
+      )}
+      {videoLink && (
+        <a href={videoLink} target="_blank" rel="noreferrer" class="btn btn-primary project-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          Video
+        </a>
+      )}
+      {demoLink && (
+        <a href={demoLink} target="_blank" rel="noreferrer" class="btn btn-primary project-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93V18a1 1 0 0 0-2 0v1.93A8.001 8.001 0 0 1 4.07 13H6a1 1 0 0 0 0-2H4.07A8.001 8.001 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8.001 8.001 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8.001 8.001 0 0 1 11 19.93z"/></svg>
+          Live
+        </a>
+      )}
+    </div>
+  </div>
+</div>

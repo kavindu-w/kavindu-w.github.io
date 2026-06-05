@@ -1,0 +1,126 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Type from "../components/Home/Type.jsx";
+import Techstack from "../components/Home/Techstack.jsx";
+import Github from "../components/Home/Github.jsx";
+import SocialLinks from "../components/Home/SocialLinks.jsx";
+---
+
+<Layout title="Kavindu Warnakulasuriya | Portfolio">
+  <!-- Hero -->
+  <section>
+    <div class="container-fluid home-section" id="home">
+      <div class="container home-content">
+        <div class="row">
+          <div class="col-md-8 home-header" style="text-align:left">
+            <h1 style="padding-bottom:15px;margin:0" class="heading">
+              Hello World!{" "}
+              <span class="wave" role="img" aria-label="wave">👋🏻</span>
+            </h1>
+            <h1 class="heading-name" style="margin:5px">
+              I'm
+              <strong class="main-name"> Kavindu Warnakulasuriya</strong>
+            </h1>
+            <div style="padding:50px;text-align:left;display:flex">
+              <h1 style="font-size:2.2em;padding-top:8px">
+                <span style="padding-right:10px;color:green">akw:~$</span>
+              </h1>
+              <Type client:only="react" />
+            </div>
+          </div>
+          <div class="col-md-4" style="padding-bottom:0;position:relative">
+            <img
+              src="/images/rounded pic.drawio.png"
+              alt="Kavindu"
+              class="img-fluid profile-img-glow"
+              style="max-height:450px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About / README -->
+    <div class="container-fluid home-about-section fade-in-section" id="about" style="padding-top:0">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 home-about-description">
+            <h1 style="font-size:2.6em">
+              <span class="purple">README</span> 😁
+            </h1>
+            <p class="home-about-body">
+              👋🏾 Hi Everyone, I am{" "}
+              <span style="color:#caa6ff">Kavindu Warnakulasuriya</span>, and I am from
+              <br />Seeduwa, Sri Lanka.
+              <br /><br />
+              🎓 I am currently a <span style="color:#caa6ff">Computer Science PhD Student</span> at National University of Singapore (NUS).
+
+              {" "} I am also a{" "}
+              <span style="color:#caa6ff">Computer Science &amp; Engineering</span> graduate,
+              specialised in{" "}
+              <span style="color:#caa6ff">Data Science &amp; Engineering</span> from the{" "}
+              <span style="color:#caa6ff">University of Moratuwa</span>.
+              <br /><br />
+              😊 I am enthusiastic and passionate about research on Natural Language Processing (NLP), Low-resource NLP, Large Language Models (LLMs), Neural Machine Translation (NMT), Data Visualization, and Data Science.
+              <br /><br />
+              Apart from coding, some of my interests and passions are:
+              <ul>
+                <li class="about-activity">🎵 Playing piano 🎹 and clarinet</li>
+                <li class="about-activity">🏸 Playing badminton</li>
+                <li class="about-activity">🧩 Puzzle-solving (Rubik's cube, Sudoku, etc.)</li>
+              </ul>
+              <p style="color:rgb(155 126 172)">
+                "Do not worry about the things that are out of your control.
+                <br />Simply adapt and continue!"
+              </p>
+              <footer class="blockquote-footer">Anonymous</footer>
+            </p>
+          </div>
+          <div class="col-md-4 myAvtar" style="padding-top:120px;padding-bottom:50px">
+            <img src="/images/about.png" alt="about" class="img-fluid" />
+          </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="row about-section fade-in-section">
+          <h1 class="project-heading">
+            <strong class="purple">Languages</strong> and{" "}
+            <strong class="purple">Tools</strong> 🛠️
+          </h1>
+          <Techstack client:only="react" />
+          <Github client:only="react" />
+        </div>
+
+        <!-- GitHub Stats -->
+        <div class="row justify-content-center fade-in-section" style="gap:1rem">
+          <div class="col-auto home-about-description">
+            <a href="https://github.com/kavindu-w/github-readme-stats">
+              <img
+                height="200"
+                alt="GitHub stats"
+                src="https://github-readme-stats-five-zeta-16.vercel.app/api?username=kavindu-w&show_icons=true&theme=github_dark&layout=donut-vertical"
+                loading="lazy"
+              />
+            </a>
+          </div>
+          <div class="col-auto home-about-description">
+            <a href="https://github.com/kavindu-w/github-readme-stats">
+              <img
+                alt="Top Languages"
+                src="https://github-readme-stats-five-zeta-16.vercel.app/api/top-langs?username=kavindu-w&theme=github_dark&langs_count=8&layout=donut-vertical&card_width=320"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="row fade-in-section">
+          <div class="col-md-12">
+            <SocialLinks client:only="react" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

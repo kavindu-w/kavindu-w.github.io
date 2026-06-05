@@ -1,0 +1,23 @@
+---
+import VisitorCounter from "./VisitorCounter.jsx";
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 footer-copywright">
+        <h3>Copyright &copy; {year} akw</h3>
+      </div>
+      <div class="col-md-4 footer-copywright">
+        <VisitorCounter client:only="react" />
+      </div>
+      <div
+        class="col-md-4 footer-copywright"
+        style="display:flex;align-items:center;justify-content:center;gap:1rem"
+      >
+        <h3>Designed by Kavindu Warnakulasuriya</h3>
+      </div>
+    </div>
+  </div>
+</footer>

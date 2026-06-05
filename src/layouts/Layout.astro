@@ -1,0 +1,71 @@
+---
+import NavBar from "../components/NavBar.jsx";
+import Footer from "../components/Footer.astro";
+import Pre from "../components/Pre.jsx";
+import Particle from "../components/Particle.jsx";
+import "../styles/global.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+export interface Props {
+  title?: string;
+}
+
+const { title = "Kavindu Warnakulasuriya | Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/logo.jpeg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Kavindu Warnakulasuriya — CS&E Graduate specialising in Data Science & NLP research." />
+    <title>{title}</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=TAG_ID"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'GTM-NDTWDBX');
+    </script>
+  </head>
+  <body>
+    <Pre client:only="react" />
+    <NavBar client:only="react" />
+    <Particle client:only="react" />
+    <slot />
+    <Footer />
+    <button id="back-to-top" aria-label="Back to top">&#8679;</button>
+  </body>
+  <script is:inline>
+    const btt = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+      btt.classList.toggle("btt-visible", window.scrollY > 400);
+    });
+    btt.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  </script>
+  <script is:inline>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    function observeAll() {
+      document.querySelectorAll(".fade-in-section:not(.visible)").forEach((el) => observer.observe(el));
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", observeAll);
+    } else {
+      observeAll();
+    }
+  </script>
+</html>
