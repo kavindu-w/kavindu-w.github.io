@@ -1,0 +1,40 @@
+---
+import NavBar from "../components/NavBar.jsx";
+import Footer from "../components/Footer.astro";
+import Pre from "../components/Pre.jsx";
+import Particle from "../components/Particle.jsx";
+import "../styles/global.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+export interface Props {
+  title?: string;
+}
+
+const { title = "Kavindu Warnakulasuriya | Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/logo.jpeg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Kavindu Warnakulasuriya — CS&E Graduate specialising in Data Science & NLP research." />
+    <title>{title}</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=TAG_ID"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'GTM-NDTWDBX');
+    </script>
+  </head>
+  <body>
+    <Pre client:only="react" />
+    <NavBar client:only="react" />
+    <Particle client:only="react" />
+    <slot />
+    <Footer />
+  </body>
+</html>

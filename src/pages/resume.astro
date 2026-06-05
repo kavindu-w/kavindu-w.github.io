@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const cvUrl =
+  "https://raw.githubusercontent.com/kavindu-w/kavindu-w.github.io/master/src/Assets/Arachchige_Kavindu_Warnakulasuirya_CV.pdf";
+---
+
+<Layout title="Resume | Kavindu Warnakulasuriya">
+  <div class="container-fluid resume-section">
+    <div class="container" style="text-align:center;padding-top:2rem">
+      <h1 style="color:white;margin-bottom:2rem">
+        My <strong class="purple">Resume</strong>
+      </h1>
+      <p style="color:rgba(255,255,255,0.8);font-size:1.1rem;margin-bottom:2rem">
+        Click below to view or download my CV.
+      </p>
+      <a
+        href={cvUrl}
+        target="_blank"
+        rel="noreferrer"
+        class="btn btn-primary"
+        style="font-size:1.1rem;padding:0.6rem 2rem"
+      >
+        View / Download CV
+      </a>
+    </div>
+  </div>
+</Layout>

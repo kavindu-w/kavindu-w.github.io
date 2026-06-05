@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/Projects/ProjectCard.astro";
+---
+
+<Layout title="Projects | Kavindu Warnakulasuriya">
+  <div class="container-fluid project-section">
+    <div class="container">
+      <h1 class="project-heading">
+        My Recent <strong class="purple">Works</strong>
+      </h1>
+      <div class="row" style="justify-content:center;padding-bottom:10px">
+
+        <div class="col-md-6 project-card">
+          <ProjectCard
+            imgPath="/images/Projects/fyp.png"
+            title="Evolution of Cooperation in LLM-Agent Societies: A Preliminary Study Using Different Punishment Strategies"
+            p1="● Final year research project studying normative reasoning abilities of LLM agents in social dilemmas using the Smallville multi-agent simulation environment, under the supervision of Prof. Stephen Cranefield (Otago, NZ), Prof. Tony Savarimuthu (Otago, NZ), Dr. Surangika Ranathunga (Massey, NZ), and Dr. Nisansa de Silva (UoM, SL)"
+            p2="● Modified the Smallville environment to model and simulate the diner's dilemma scenario, including implementing the dilemma scenario logic, agent scheduling, developing and fine-tuning the logic for punishment mechanisms, implementing detailed dilemma decisions and reasoning logging"
+            p3="● Lead the paper writing by drafting the abstract, literature review, and conclusion."
+            p4="● Accepted and presented at the International COINE Workshop (C-ranked), co-located with AAMAS 2025, Detroit, Michigan, USA — 20th May 2025"
+            demoButtonName="Paper"
+            demoLink="https://arxiv.org/abs/2504.19487"
+            demoButtonName2="Video Presentation"
+            demoLink2="https://www.youtube.com/watch?v=1EWWBLulPhY"
+            techStack="Python, Tiled Map Editor, Vertex API, Groq API"
+          />
+        </div>
+
+        <div class="col-md-6 project-card">
+          <ProjectCard
+            imgPath="/images/Projects/busprj.png"
+            title="Explainable Bus Arrival Time Prediction Model with Improved Features Related to Topography and Points of Interest"
+            p1="● Accepted and presented at the 27th IEEE International Conference on Intelligent Transportation Systems (ITSC) 2024 in Edmonton, Canada (h-index 85)"
+            p2="● Improved bus arrival time predictions by incorporating topographical data (elevation, road bends) and Points of Interest (tourist attractions, healthcare, public spaces) for heterogeneous traffic conditions"
+            p3="● Automated extraction of 5 topographical and 12 POI-related features and built a dashboard for data visualisation"
+            ghLink="https://github.com/kavindu-w/Explainable-Bus-Arrival-Time-Prediction-Model-with-Improved-Features-Related-to-Topography-and-POIs"
+            demoButtonName="Paper"
+            demoLink="https://ieeexplore.ieee.org/abstract/document/10920146"
+            demoButtonName2="Presentation"
+            demoLink2="https://www.canva.com/design/DAGMa9LvHi8/HRpSvp8GDlnvLirMcaRIMQ/view"
+            techStack="Python, MySql, R Shiny"
+          />
+        </div>
+
+        <div class="col-md-4 project-card">
+          <ProjectCard
+            imgPath="/images/Projects/caesarean.png"
+            title="Model Calibration for Birth Delivery Mode Prediction: Caesarean Section Prediction"
+            p1="● Recreating and validating the model through calibration studies and employing uncertainty quantification to enhance predictive reliability in this critical medical domain"
+            techStack="Pandas, NumPy, SciPy, scikit-learn — Python"
+          />
+        </div>
+
+        <div class="col-md-4 project-card">
+          <ProjectCard
+            imgPath="/images/Projects/churn.png"
+            title="Churn Analyzer App"
+            p1="● Empowered management decision-making on employee retention by developing a customer churn analyzing app with key insights influencing employee attrition"
+            ghLink="https://github.com/kavindu-w/churn-analyzer"
+            techStack="Pandas, Seaborn — Python, H2O Wave"
+          />
+        </div>
+
+        <div class="col-md-4 project-card">
+          <ProjectCard
+            imgPath="/images/Projects/teddybear.png"
+            title="E-Commerce Platform — DBMS Project"
+            p1="● Created an online shopping website in comparison to Amazon, with a custom backend from scratch"
+            ghLink="https://github.com/joelsathi/DBMS-project"
+            techStack="MySql, FastAPI — Python, Node, Vite — TypeScript"
+          />
+        </div>
+
+        <div class="col-md-4 project-card">
+          <ProjectCard
+            imgPath="/images/Projects/attrition.png"
+            title="Employee Attrition Analysis Project"
+            p1="● Empowered management decision-making on employee retention at Marvelous Construction by identifying four key areas of insights influencing employee attrition"
+            ghLink="https://github.com/kavindu-w/Employee-Attrition-Analysis-Solo-Project"
+            techStack="Power BI, Tableau, Python (NumPy, Pandas, Scikit-learn, Seaborn)"
+          />
+        </div>
+
+        <div class="col-md-4 project-card">
+          <ProjectCard
+            imgPath="/images/Projects/dashboard.jpg"
+            title="Kickstarter Technology Projects Dashboard"
+            p1="● Developed an insightful dashboard by employing various data visualization techniques, condensing 16 technology subcategories into five informative charts"
+            ghLink="https://github.com/kavindu-w/Kickstarter-Technology-Projects-Dashboard"
+            techStack="Power BI, Tableau"
+          />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</Layout>
