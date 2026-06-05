@@ -1,0 +1,1 @@
+import{j as s}from"./jsx-runtime.jK7U2TdY.js";import{r as t}from"./index.B80Lgev0.js";function n(){const[r,e]=t.useState(!1);return t.useEffect(()=>{if(sessionStorage.getItem("preloaded"))return;e(!0);const o=setTimeout(()=>{e(!1),sessionStorage.setItem("preloaded","1")},1200);return()=>clearTimeout(o)},[]),s.jsx("div",{id:r?"preloader":"preloader-none"})}export{n as default};
