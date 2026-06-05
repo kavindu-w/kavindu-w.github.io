@@ -37,4 +37,27 @@ const { title = "Kavindu Warnakulasuriya | Portfolio" } = Astro.props;
     <slot />
     <Footer />
   </body>
+  <script is:inline>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    function observeAll() {
+      document.querySelectorAll(".fade-in-section:not(.visible)").forEach((el) => observer.observe(el));
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", observeAll);
+    } else {
+      observeAll();
+    }
+  </script>
 </html>

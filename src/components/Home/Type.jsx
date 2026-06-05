@@ -7,8 +7,7 @@ function Type() {
         strings: [
           "Computer Science PhD Student",
           "Computer Science & Engineering Graduate",
-          "Specialised in Data Science",
-          "Passionate pianist",
+          "Passionate Pianist",
         ],
         autoStart: true,
         loop: true,
