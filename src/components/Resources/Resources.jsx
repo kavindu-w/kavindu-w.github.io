@@ -6,7 +6,6 @@ import "../../styles/resources.css";
 import { Counter } from "counterapi";
 
 const DOWNLOAD_COUNTER = "downld";
-const LIKE_COUNTER = "lkes";
 const WORKSPACE = "kavindu-testers-team-1628";
 
 const client = new Counter({ workspace: WORKSPACE });
@@ -34,14 +33,24 @@ function useCounter(key) {
     }
   };
 
+  const decrement = async () => {
+    try {
+      const res = await client.down(key);
+      const newValue = res.data.up_count ?? count;
+      setCount(newValue);
+      return newValue;
+    } catch {
+      return count;
+    }
+  };
+
   useEffect(() => { fetchCount(); }, []);
 
-  return [count, increment, setCount];
+  return [count, increment, decrement, setCount];
 }
 
 function Resources() {
-  const [totalDownloads, hitDownload, setDownloads] = useCounter(DOWNLOAD_COUNTER);
-  const [totalLikes, hitLike, setLikes] = useCounter(LIKE_COUNTER);
+  const [totalDownloads, hitDownload, , setDownloads] = useCounter(DOWNLOAD_COUNTER);
 
   return (
     <Container fluid className="project-section" style={{ paddingTop: 120, minHeight: "calc(100vh - 60px)" }}>
@@ -56,8 +65,6 @@ function Resources() {
         for suggestions, additions, or corrections!
         <br />
         <strong style={{ color: "#caa6ff" }}>
-          {Number(totalLikes) > 0 && <span>{totalLikes} total likes 👍</span>}
-          {Number(totalLikes) > 0 && Number(totalDownloads) > 0 && " | "}
           {Number(totalDownloads) > 0 && <span>{totalDownloads} total downloads 📥</span>}
         </strong>
       </p>
@@ -74,7 +81,7 @@ function Resources() {
                 <Row style={{ gap: "1rem" }}>
                   {degree.notes.map((note) => (
                     <Col key={note.id} xs={12} md={6} lg={4}>
-                      <NoteCard note={note} hitDownload={hitDownload} hitLike={hitLike} setDownloads={setDownloads} setLikes={setLikes} />
+                      <NoteCard note={note} hitDownload={hitDownload} setDownloads={setDownloads} />
                     </Col>
                   ))}
                 </Row>
@@ -99,7 +106,7 @@ function Resources() {
                                 <Row style={{ gap: "1rem" }}>
                                   {module.notes.map((note) => (
                                     <Col key={note.id} xs={12} md={6} lg={4}>
-                                      <NoteCard note={note} hitDownload={hitDownload} hitLike={hitLike} setDownloads={setDownloads} setLikes={setLikes} />
+                                      <NoteCard note={note} hitDownload={hitDownload} setDownloads={setDownloads} />
                                     </Col>
                                   ))}
                                 </Row>
@@ -120,11 +127,19 @@ function Resources() {
   );
 }
 
-function NoteCard({ note, hitDownload, hitLike, setDownloads, setLikes }) {
+function NoteCard({ note, hitDownload, setDownloads }) {
   const [liked, setLiked] = useState(() => {
     try { return localStorage.getItem(`liked_${note.key}`) === "1"; }
     catch { return false; }
   });
+  const [likeCount, setLikeCount] = useState(null);
+  const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    client.get(`lk_${note.key}`)
+      .then((res) => setLikeCount(res.data?.up_count ?? 0))
+      .catch(() => setLikeCount(0));
+  }, []);
 
   const onDownload = async (e) => {
     e.preventDefault();
@@ -134,12 +149,28 @@ function NoteCard({ note, hitDownload, hitLike, setDownloads, setLikes }) {
   };
 
   const onLike = async () => {
-    if (liked) return;
-    const newVal = await hitLike();
-    setLikes(newVal);
-    localStorage.setItem(`liked_${note.key}`, "1");
-    setLiked(true);
+    if (busy) return;
+    setBusy(true);
+    if (liked) {
+      setLikeCount((c) => Math.max(0, (c ?? 1) - 1));
+      setLiked(false);
+      localStorage.removeItem(`liked_${note.key}`);
+      client.down(`lk_${note.key}`)
+        .then((res) => setLikeCount(res.data?.up_count ?? 0))
+        .catch(() => {})
+        .finally(() => setBusy(false));
+    } else {
+      setLikeCount((c) => (c ?? 0) + 1);
+      setLiked(true);
+      localStorage.setItem(`liked_${note.key}`, "1");
+      client.up(`lk_${note.key}`)
+        .then((res) => setLikeCount(res.data?.up_count ?? 0))
+        .catch(() => {})
+        .finally(() => setBusy(false));
+    }
   };
+
+  const likeLabel = likeCount > 0 ? `Like (${likeCount})` : "Like";
 
   const isPdf = note.fileUrl?.toLowerCase().endsWith(".pdf");
   const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(note.fileUrl ?? "");
@@ -175,8 +206,13 @@ function NoteCard({ note, hitDownload, hitLike, setDownloads, setLikes }) {
           )}
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "0.75rem", marginTop: 12 }}>
-          <Button variant={liked ? "success" : "outline-primary"} onClick={onLike} disabled={liked}>
-            {liked ? "Liked" : "Like"}
+          <Button
+            variant={liked ? "success" : "outline-primary"}
+            onClick={onLike}
+            disabled={busy}
+            style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+          >
+            👍 {likeLabel}
           </Button>
           <Button variant="primary" onClick={onDownload}>
             View / Download
