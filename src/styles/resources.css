@@ -118,4 +118,120 @@
 /* ---- Chevron icon ---- */
 .custom-accordion .accordion-button::after {
   filter: brightness(0) saturate(100%) invert(72%) sepia(28%) saturate(500%) hue-rotate(225deg) brightness(95%);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ---- Toolbar ---- */
+.resource-toolbar {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.resource-search-wrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.resource-search-icon {
+  position: absolute;
+  left: 12px;
+  color: #666;
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+
+.resource-search {
+  width: 100%;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: white;
+  padding: 0.55rem 2.4rem 0.55rem 2.2rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.resource-search:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
+
+.resource-search::placeholder {
+  color: #555;
+}
+
+.resource-search-clear {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0 4px;
+  font-size: 0.85rem;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.resource-search-clear:hover {
+  color: #caa6ff;
+}
+
+.resource-toggle-btn {
+  white-space: nowrap;
+  color: #9c6ac7 !important;
+  border-color: #3a2060 !important;
+  background: transparent !important;
+  font-size: 0.85rem !important;
+  transition: all 0.2s !important;
+}
+
+.resource-toggle-btn:hover {
+  background: rgba(124, 58, 237, 0.15) !important;
+  border-color: #7c3aed !important;
+  color: #c084fc !important;
+}
+
+/* ---- Note count badge ---- */
+.resource-badge {
+  font-size: 0.7rem;
+  background: rgba(124, 58, 237, 0.18);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  color: #c084fc;
+  border-radius: 20px;
+  padding: 2px 9px;
+  font-weight: 500;
+  margin-left: 0.6rem;
+  flex-shrink: 0;
+}
+
+/* ---- Search result breadcrumb ---- */
+.resource-search-context {
+  font-size: 0.75rem;
+  color: #9c6ac7;
+  margin-bottom: 6px;
+  padding-left: 2px;
+}
+
+/* ---- Skeleton shimmer ---- */
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-pill {
+  display: inline-block;
+  width: 55px;
+  height: 13px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #2a2a2a 25%, #444 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.3s ease infinite;
+  vertical-align: middle;
 }

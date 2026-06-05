@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col, Card, Button, Accordion } from "react-bootstrap";
-import { FaGraduationCap, FaLayerGroup, FaBookOpen } from "react-icons/fa";
+import { FaGraduationCap, FaLayerGroup, FaBookOpen, FaSearch, FaTimes } from "react-icons/fa";
 import structuredResources from "../../data/resources.js";
 import "../../styles/resources.css";
 import { Counter } from "counterapi";
@@ -49,8 +49,92 @@ function useCounter(key) {
   return [count, increment, decrement, setCount];
 }
 
+function countNotes(degree) {
+  return (degree.notes?.length ?? 0) +
+    (degree.semesters?.reduce((a, s) =>
+      a + s.modules.reduce((b, m) => b + m.notes.length, 0), 0) ?? 0);
+}
+
+function flattenNotes(resources) {
+  return resources.flatMap((degree) => [
+    ...(degree.notes ?? []).map((note) => ({ ...note, context: degree.title })),
+    ...(degree.semesters ?? []).flatMap((sem) =>
+      sem.modules.flatMap((mod) =>
+        mod.notes.map((note) => ({
+          ...note,
+          context: `${sem.title} › ${mod.title}`,
+        }))
+      )
+    ),
+  ]);
+}
+
 function Resources() {
   const [totalDownloads, hitDownload, , setDownloads] = useCounter(DOWNLOAD_COUNTER);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [openDegrees, setOpenDegrees] = useState(
+    structuredResources.length > 0 ? ["deg-0"] : []
+  );
+
+  const [openSemesters, setOpenSemesters] = useState([]);
+  const [openModules, setOpenModules] = useState([]);
+
+  const allNotes = useMemo(() => flattenNotes(structuredResources), []);
+
+  const { allSemesterKeys, allModuleKeys } = useMemo(() => {
+    const semKeys = structuredResources.flatMap((deg, di) =>
+      (deg.semesters ?? []).map((_, si) => `sem-${di}-${si}`)
+    );
+    const modKeys = structuredResources.flatMap((deg, di) =>
+      (deg.semesters ?? []).flatMap((sem, si) =>
+        sem.modules.map((_, mi) => `mod-${di}-${si}-${mi}`)
+      )
+    );
+    return { allSemesterKeys: semKeys, allModuleKeys: modKeys };
+  }, []);
+
+  const filteredNotes = searchQuery.trim()
+    ? allNotes.filter(
+        (note) =>
+          note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          note.context.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : null;
+
+  const allExpanded =
+    openDegrees.length === structuredResources.length &&
+    openSemesters.length === allSemesterKeys.length &&
+    openModules.length === allModuleKeys.length;
+
+  const handleDegreeSelect = (key) => {
+    setOpenDegrees((prev) =>
+      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
+    );
+  };
+
+  const handleSemesterSelect = (key) => {
+    setOpenSemesters((prev) =>
+      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
+    );
+  };
+
+  const handleModuleSelect = (key) => {
+    setOpenModules((prev) =>
+      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
+    );
+  };
+
+  const toggleAll = () => {
+    if (allExpanded) {
+      setOpenDegrees([]);
+      setOpenSemesters([]);
+      setOpenModules([]);
+    } else {
+      setOpenDegrees(structuredResources.map((_, i) => `deg-${i}`));
+      setOpenSemesters(allSemesterKeys);
+      setOpenModules(allModuleKeys);
+    }
+  };
 
   return (
     <Container fluid className="project-section" style={{ paddingTop: 120, minHeight: "calc(100vh - 60px)" }}>
@@ -70,66 +154,121 @@ function Resources() {
           </strong>
         </p>
 
-        <Accordion alwaysOpen className="custom-accordion accordion-level-1">
-          {structuredResources.map((degree, degIdx) => (
-            <Accordion.Item eventKey={`deg-${degIdx}`} key={degIdx}>
-              <Accordion.Header>
-                <FaGraduationCap className="level-icon" />
-                {degree.title}
-              </Accordion.Header>
-              <Accordion.Body>
-                {degree.notes && (
-                  <Row style={{ gap: "1rem" }}>
-                    {degree.notes.map((note) => (
-                      <Col key={note.id} xs={12} md={6} lg={4}>
-                        <NoteCard note={note} hitDownload={hitDownload} setDownloads={setDownloads} />
-                      </Col>
-                    ))}
-                  </Row>
-                )}
-                {degree.semesters && (
-                  <Accordion alwaysOpen className="custom-accordion accordion-level-2">
-                    {degree.semesters.map((sem, semIdx) => (
-                      <Accordion.Item eventKey={`sem-${degIdx}-${semIdx}`} key={semIdx}>
-                        <Accordion.Header>
-                          <FaLayerGroup className="level-icon" />
-                          {sem.title}
-                        </Accordion.Header>
-                        <Accordion.Body>
-                          <Accordion alwaysOpen className="custom-accordion accordion-level-3">
-                            {sem.modules.map((module, modIdx) => (
-                              <Accordion.Item eventKey={`mod-${degIdx}-${semIdx}-${modIdx}`} key={modIdx}>
-                                <Accordion.Header>
-                                  <FaBookOpen className="level-icon" />
-                                  {module.title}
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                  <Row style={{ gap: "1rem" }}>
-                                    {module.notes.map((note) => (
-                                      <Col key={note.id} xs={12} md={6} lg={4}>
-                                        <NoteCard note={note} hitDownload={hitDownload} setDownloads={setDownloads} />
-                                      </Col>
-                                    ))}
-                                  </Row>
-                                </Accordion.Body>
-                              </Accordion.Item>
-                            ))}
-                          </Accordion>
-                        </Accordion.Body>
-                      </Accordion.Item>
-                    ))}
-                  </Accordion>
-                )}
-              </Accordion.Body>
-            </Accordion.Item>
-          ))}
-        </Accordion>
+        {/* Search + toggle row */}
+        <div className="resource-toolbar">
+          <div className="resource-search-wrap">
+            <FaSearch className="resource-search-icon" />
+            <input
+              type="text"
+              className="resource-search"
+              placeholder="Search notes or modules…"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button className="resource-search-clear" onClick={() => setSearchQuery("")} aria-label="Clear search">
+                <FaTimes />
+              </button>
+            )}
+          </div>
+          {!searchQuery && (
+            <Button variant="outline-secondary" size="sm" onClick={toggleAll} className="resource-toggle-btn">
+              {allExpanded ? "Collapse All" : "Expand All"}
+            </Button>
+          )}
+        </div>
+
+        {/* Search results */}
+        {filteredNotes ? (
+          filteredNotes.length === 0 ? (
+            <p style={{ color: "#9b9b9b", marginTop: "1.5rem" }}>
+              No notes found for &ldquo;{searchQuery}&rdquo;
+            </p>
+          ) : (
+            <>
+              <p style={{ color: "#9c6ac7", marginBottom: "1rem", fontSize: "0.9rem" }}>
+                {filteredNotes.length} result{filteredNotes.length !== 1 ? "s" : ""}
+              </p>
+              <Row style={{ gap: "1rem" }}>
+                {filteredNotes.map((note) => (
+                  <Col key={note.id} xs={12} md={6} lg={4}>
+                    <NoteCard note={note} context={note.context} hitDownload={hitDownload} setDownloads={setDownloads} />
+                  </Col>
+                ))}
+              </Row>
+            </>
+          )
+        ) : (
+          /* Normal accordion */
+          <Accordion
+            alwaysOpen
+            activeKey={openDegrees}
+            onSelect={handleDegreeSelect}
+            className="custom-accordion accordion-level-1"
+          >
+            {structuredResources.map((degree, degIdx) => (
+              <Accordion.Item eventKey={`deg-${degIdx}`} key={degIdx}>
+                <Accordion.Header>
+                  <FaGraduationCap className="level-icon" />
+                  {degree.title}
+                  <span className="resource-badge">{countNotes(degree)} notes</span>
+                </Accordion.Header>
+                <Accordion.Body>
+                  {degree.notes && (
+                    <Row style={{ gap: "1rem" }}>
+                      {degree.notes.map((note) => (
+                        <Col key={note.id} xs={12} md={6} lg={4}>
+                          <NoteCard note={note} hitDownload={hitDownload} setDownloads={setDownloads} />
+                        </Col>
+                      ))}
+                    </Row>
+                  )}
+                  {degree.semesters && (
+                    <Accordion alwaysOpen activeKey={openSemesters} onSelect={handleSemesterSelect} className="custom-accordion accordion-level-2">
+                      {degree.semesters.map((sem, semIdx) => (
+                        <Accordion.Item eventKey={`sem-${degIdx}-${semIdx}`} key={semIdx}>
+                          <Accordion.Header>
+                            <FaLayerGroup className="level-icon" />
+                            {sem.title}
+                            <span className="resource-badge">{sem.modules.length} modules</span>
+                          </Accordion.Header>
+                          <Accordion.Body>
+                            <Accordion alwaysOpen activeKey={openModules} onSelect={handleModuleSelect} className="custom-accordion accordion-level-3">
+                              {sem.modules.map((module, modIdx) => (
+                                <Accordion.Item eventKey={`mod-${degIdx}-${semIdx}-${modIdx}`} key={modIdx}>
+                                  <Accordion.Header>
+                                    <FaBookOpen className="level-icon" />
+                                    {module.title}
+                                    <span className="resource-badge">{module.notes.length} notes</span>
+                                  </Accordion.Header>
+                                  <Accordion.Body>
+                                    <Row style={{ gap: "1rem" }}>
+                                      {module.notes.map((note) => (
+                                        <Col key={note.id} xs={12} md={6} lg={4}>
+                                          <NoteCard note={note} hitDownload={hitDownload} setDownloads={setDownloads} />
+                                        </Col>
+                                      ))}
+                                    </Row>
+                                  </Accordion.Body>
+                                </Accordion.Item>
+                              ))}
+                            </Accordion>
+                          </Accordion.Body>
+                        </Accordion.Item>
+                      ))}
+                    </Accordion>
+                  )}
+                </Accordion.Body>
+              </Accordion.Item>
+            ))}
+          </Accordion>
+        )}
       </Container>
     </Container>
   );
 }
 
-function NoteCard({ note, hitDownload, setDownloads }) {
+function NoteCard({ note, context, hitDownload, setDownloads }) {
   const [liked, setLiked] = useState(() => {
     try { return localStorage.getItem(`liked_${note.key}`) === "1"; }
     catch { return false; }
@@ -172,14 +311,13 @@ function NoteCard({ note, hitDownload, setDownloads }) {
     }
   };
 
-  const likeLabel = likeCount > 0 ? `Like (${likeCount})` : "Like";
-
   const isPdf = note.fileUrl?.toLowerCase().endsWith(".pdf");
   const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(note.fileUrl ?? "");
 
   return (
     <Card className="blog-card-view" style={{ height: "100%" }}>
       <Card.Body>
+        {context && <div className="resource-search-context">{context}</div>}
         <Card.Title>
           <strong className="purple">{note.title}</strong>
         </Card.Title>
@@ -211,10 +349,14 @@ function NoteCard({ note, hitDownload, setDownloads }) {
           <Button
             variant={liked ? "success" : "outline-primary"}
             onClick={onLike}
-            disabled={busy}
-            style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+            disabled={busy || likeCount === null}
+            style={{ display: "inline-flex", alignItems: "center", gap: "6px", minWidth: 96 }}
           >
-            👍 {likeLabel}
+            {likeCount === null ? (
+              <span className="skeleton-pill" />
+            ) : (
+              <>👍 {likeCount > 0 ? `Like (${likeCount})` : "Like"}</>
+            )}
           </Button>
           <Button variant="primary" onClick={onDownload}>
             View / Download

@@ -36,7 +36,15 @@ const { title = "Kavindu Warnakulasuriya | Portfolio" } = Astro.props;
     <Particle client:only="react" />
     <slot />
     <Footer />
+    <button id="back-to-top" aria-label="Back to top">&#8679;</button>
   </body>
+  <script is:inline>
+    const btt = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+      btt.classList.toggle("btt-visible", window.scrollY > 400);
+    });
+    btt.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  </script>
   <script is:inline>
     const observer = new IntersectionObserver(
       (entries) => {
