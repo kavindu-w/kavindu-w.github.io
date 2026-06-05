@@ -41,6 +41,19 @@ import ProjectCard from "../components/Projects/ProjectCard.astro";
 
         <div class="col-md-4 project-card">
           <ProjectCard
+            imgPath="/images/Projects/langtrend.png"
+            title="LangTrend — Tracking Language Representation in NLP Research"
+            p1="● Weekly automated pipeline that scans arXiv cs.CL submissions, detects explicitly mentioned human languages via full-text extraction (HTML → PDF → abstract fallback), and publishes an interactive dashboard tracking language representation over time"
+            p2="● Implements 6-tier language resource classification (Joshi et al. / Ranathunga & de Silva taxonomy), acronym conflict detection, and transparent false-positive flagging with links to source papers for manual verification"
+            p3="● GitHub Actions workflow runs every Tuesday; all manifest JSONs are committed to the repository as open data"
+            ghLink="https://github.com/kavindu-w/langtrend"
+            demoLink="https://kavindu-w.github.io/langtrend"
+            techStack="Python, arXiv API, Docling, Astro"
+          />
+        </div>
+
+        <div class="col-md-4 project-card">
+          <ProjectCard
             imgPath="/images/Projects/caesarean.png"
             title="Model Calibration for Birth Delivery Mode Prediction: Caesarean Section Prediction"
             p1="● Recreating and validating the model through calibration studies and employing uncertainty quantification to enhance predictive reliability in this critical medical domain"

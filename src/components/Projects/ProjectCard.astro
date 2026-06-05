@@ -11,9 +11,10 @@ export interface Props {
   paperLink?: string;
   presentationLink?: string;
   videoLink?: string;
+  demoLink?: string;
 }
 
-const { imgPath, title, p1, p2, p3, p4, techStack, ghLink, paperLink, presentationLink, videoLink } = Astro.props;
+const { imgPath, title, p1, p2, p3, p4, techStack, ghLink, paperLink, presentationLink, videoLink, demoLink } = Astro.props;
 ---
 
 <div class="card project-card-view">
@@ -55,6 +56,12 @@ const { imgPath, title, p1, p2, p3, p4, techStack, ghLink, paperLink, presentati
         <a href={videoLink} target="_blank" rel="noreferrer" class="btn btn-primary project-btn">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
           Video
+        </a>
+      )}
+      {demoLink && (
+        <a href={demoLink} target="_blank" rel="noreferrer" class="btn btn-primary project-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 17.93V18a1 1 0 0 0-2 0v1.93A8.001 8.001 0 0 1 4.07 13H6a1 1 0 0 0 0-2H4.07A8.001 8.001 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8.001 8.001 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8.001 8.001 0 0 1 11 19.93z"/></svg>
+          Live
         </a>
       )}
     </div>
