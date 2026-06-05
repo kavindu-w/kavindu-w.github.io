@@ -1,12 +1,14 @@
+/* ---- Base accordion overrides ---- */
 .custom-accordion .accordion-item {
   background-color: #0d0d0d;
-  border: 1px solid #333;
-  border-radius: 6px;
-  margin-bottom: 8px;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px !important;
+  margin-bottom: 10px;
+  overflow: hidden;
 }
 
 .custom-accordion .accordion-header {
-  background-color: #111 !important;
+  background-color: transparent;
 }
 
 .custom-accordion .accordion-button {
@@ -14,19 +16,106 @@
   color: #caa6ff !important;
   font-weight: 600;
   border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s ease;
 }
 
 .custom-accordion .accordion-button:not(.collapsed) {
-  background-color: #1a1a1a !important;
+  background-color: #1c1033 !important;
   color: #fff !important;
   box-shadow: none;
 }
 
-.custom-accordion .accordion-body {
-  background-color: #111;
-  color: white;
-}
-
 .custom-accordion .accordion-button:focus {
   box-shadow: none;
+}
+
+.custom-accordion .accordion-body {
+  background-color: #0d0d0d;
+  color: white;
+  padding: 1rem 1.25rem;
+}
+
+/* ---- Level 1: Degree ---- */
+.accordion-level-1 > .accordion-item {
+  border-left: 4px solid #7c3aed !important;
+  border-radius: 8px !important;
+  margin-bottom: 14px;
+}
+
+.accordion-level-1 > .accordion-item > .accordion-header .accordion-button {
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  padding: 1rem 1.25rem;
+}
+
+.accordion-level-1 > .accordion-item > .accordion-header .accordion-button .level-icon {
+  color: #a78bfa;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* ---- Level 2: Semester ---- */
+.accordion-level-2 > .accordion-item {
+  border-left: 3px solid #6d4caa !important;
+  border-radius: 6px !important;
+  margin-bottom: 8px;
+  background-color: #111 !important;
+}
+
+.accordion-level-2 > .accordion-item > .accordion-header .accordion-button {
+  font-size: 0.97rem;
+  font-weight: 600;
+  padding: 0.75rem 1.1rem;
+  background-color: #161616 !important;
+}
+
+.accordion-level-2 > .accordion-item > .accordion-header .accordion-button:not(.collapsed) {
+  background-color: #1a1040 !important;
+}
+
+.accordion-level-2 > .accordion-item > .accordion-header .accordion-button .level-icon {
+  color: #9c6ac7;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ---- Level 3: Module ---- */
+.accordion-level-3 > .accordion-item {
+  border-left: 2px solid #caa6ff !important;
+  border-radius: 5px !important;
+  margin-bottom: 6px;
+  background-color: #141414 !important;
+}
+
+.accordion-level-3 > .accordion-item > .accordion-header .accordion-button {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #d6b8ff !important;
+  padding: 0.65rem 1rem;
+  background-color: #181818 !important;
+}
+
+.accordion-level-3 > .accordion-item > .accordion-header .accordion-button:not(.collapsed) {
+  background-color: #1d1450 !important;
+  color: #fff !important;
+}
+
+.accordion-level-3 > .accordion-item > .accordion-header .accordion-button .level-icon {
+  color: #caa6ff;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.accordion-level-3 > .accordion-item > .accordion-body {
+  background-color: #141414;
+  padding: 0.75rem 1rem;
+}
+
+/* ---- Chevron icon ---- */
+.custom-accordion .accordion-button::after {
+  filter: brightness(0) saturate(100%) invert(72%) sepia(28%) saturate(500%) hue-rotate(225deg) brightness(95%);
 }

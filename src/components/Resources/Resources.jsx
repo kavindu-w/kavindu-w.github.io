@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button, Accordion } from "react-bootstrap";
+import { FaGraduationCap, FaLayerGroup, FaBookOpen } from "react-icons/fa";
 import structuredResources from "../../data/resources.js";
 import "../../styles/resources.css";
 import { Counter } from "counterapi";
@@ -43,7 +44,7 @@ function Resources() {
   const [totalLikes, hitLike, setLikes] = useCounter(LIKE_COUNTER);
 
   return (
-    <Container fluid className="project-section" style={{ paddingTop: 120 }}>
+    <Container fluid className="project-section" style={{ paddingTop: 120, minHeight: "calc(100vh - 60px)" }}>
       <h1 className="project-heading">
         <strong className="purple">Resources</strong>
       </h1>
@@ -61,10 +62,13 @@ function Resources() {
         </strong>
       </p>
 
-      <Accordion alwaysOpen className="custom-accordion">
+      <Accordion alwaysOpen className="custom-accordion accordion-level-1">
         {structuredResources.map((degree, degIdx) => (
           <Accordion.Item eventKey={`deg-${degIdx}`} key={degIdx}>
-            <Accordion.Header>{degree.title}</Accordion.Header>
+            <Accordion.Header>
+              <FaGraduationCap className="level-icon" />
+              {degree.title}
+            </Accordion.Header>
             <Accordion.Body>
               {degree.notes && (
                 <Row style={{ gap: "1rem" }}>
@@ -76,15 +80,21 @@ function Resources() {
                 </Row>
               )}
               {degree.semesters && (
-                <Accordion alwaysOpen className="custom-accordion">
+                <Accordion alwaysOpen className="custom-accordion accordion-level-2">
                   {degree.semesters.map((sem, semIdx) => (
                     <Accordion.Item eventKey={`sem-${degIdx}-${semIdx}`} key={semIdx}>
-                      <Accordion.Header>{sem.title}</Accordion.Header>
+                      <Accordion.Header>
+                        <FaLayerGroup className="level-icon" />
+                        {sem.title}
+                      </Accordion.Header>
                       <Accordion.Body>
-                        <Accordion alwaysOpen className="custom-accordion">
+                        <Accordion alwaysOpen className="custom-accordion accordion-level-3">
                           {sem.modules.map((module, modIdx) => (
                             <Accordion.Item eventKey={`mod-${degIdx}-${semIdx}-${modIdx}`} key={modIdx}>
-                              <Accordion.Header>{module.title}</Accordion.Header>
+                              <Accordion.Header>
+                                <FaBookOpen className="level-icon" />
+                                {module.title}
+                              </Accordion.Header>
                               <Accordion.Body>
                                 <Row style={{ gap: "1rem" }}>
                                   {module.notes.map((note) => (

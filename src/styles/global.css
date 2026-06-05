@@ -497,6 +497,12 @@ button:focus {
   border-color: #623686 !important;
 }
 
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .btn-primary:hover {
   color: #fff !important;
   background-color: #6d20c5d7 !important;
@@ -527,10 +533,14 @@ button:focus {
   vertical-align: middle !important;
   text-align: center !important;
   border-radius: 5px !important;
-  display: table !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
-  overflow: hidden !important;
   transition: all 0.4s ease 0s !important;
+  color: white !important;
+  position: relative !important;
+  cursor: default;
 }
 
 @media (max-width: 767px) {
@@ -541,13 +551,60 @@ button:focus {
 
 .tech-icons:hover {
   transform: scale(1.05) !important;
-  overflow: hidden !important;
   border: 2.2px solid rgba(197, 115, 230, 0.883) !important;
+}
+
+.tech-icon-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(15, 8, 35, 0.95);
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 14px;
+  white-space: nowrap;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  border: 1px solid rgba(200, 137, 230, 0.4);
+}
+
+.tech-icon-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(15, 8, 35, 0.95);
+}
+
+.tech-icons:hover .tech-icon-tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 
 .tech-icon-images {
   padding: 20px !important;
   line-height: 1.6 !important;
+}
+
+/* --------- */
+/* GitHub Calendar */
+/* --------- */
+.react-activity-calendar__legend-month,
+.react-activity-calendar__legend-weekday,
+.react-activity-calendar__count {
+  color: white !important;
+  fill: white !important;
+}
+.react-activity-calendar__footer {
+  color: white !important;
 }
 
 .quote-card-view {

@@ -1,10 +1,8 @@
-import { Col, Row, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { CgCPlusPlus } from "react-icons/cg";
 import { DiReact, DiNodejs, DiPython, DiGit, DiJava } from "react-icons/di";
 import {
   SiPytorch,
   SiLinux,
-  SiVscodium,
   SiMysql,
   SiC,
   SiGnubash,
@@ -28,25 +26,18 @@ const icons = [
   { Icon: DiNodejs, label: "Node.js" },
   { Icon: SiLinux, label: "Linux" },
   { Icon: SiGnubash, label: "GNU Bash" },
-  { Icon: SiVscodium, label: "VS Code" },
 ];
 
 function Techstack() {
   return (
-    <Row style={{ justifyContent: "center", paddingBottom: "20px" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", paddingBottom: "20px" }}>
       {icons.map(({ Icon, label }) => (
-        <Col key={label} xs={4} md={2} className="tech-icons">
-          <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>{label}</Tooltip>}
-          >
-            <span>
-              <Icon />
-            </span>
-          </OverlayTrigger>
-        </Col>
+        <div key={label} className="tech-icons">
+          <Icon />
+          <span className="tech-icon-tooltip">{label}</span>
+        </div>
       ))}
-    </Row>
+    </div>
   );
 }
 

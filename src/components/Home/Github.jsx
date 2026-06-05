@@ -13,6 +13,7 @@ function Github() {
         blockMargin={5}
         color="#3333ff"
         fontSize={16}
+        style={{ color: "white" }}
       />
     </Row>
   );
