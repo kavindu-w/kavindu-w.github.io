@@ -106,23 +106,9 @@ function Resources() {
     openSemesters.length === allSemesterKeys.length &&
     openModules.length === allModuleKeys.length;
 
-  const handleDegreeSelect = (key) => {
-    setOpenDegrees((prev) =>
-      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
-    );
-  };
-
-  const handleSemesterSelect = (key) => {
-    setOpenSemesters((prev) =>
-      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
-    );
-  };
-
-  const handleModuleSelect = (key) => {
-    setOpenModules((prev) =>
-      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
-    );
-  };
+  const handleDegreeSelect = (keys) => setOpenDegrees(keys ?? []);
+  const handleSemesterSelect = (keys) => setOpenSemesters(keys ?? []);
+  const handleModuleSelect = (keys) => setOpenModules(keys ?? []);
 
   const toggleAll = () => {
     if (allExpanded) {
