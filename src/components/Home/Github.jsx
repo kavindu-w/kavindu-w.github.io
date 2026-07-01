@@ -10,10 +10,17 @@ function Github() {
       <GitHubCalendar
         username="kavindu-w"
         blockSize={15}
+        blockRadius={5}
         blockMargin={5}
-        color="#3333ff"
         fontSize={16}
         style={{ color: "white" }}
+        theme={{
+          level0: "#cfe8f3",
+          level1: "#73bfe2",
+          level2: "#1696d2",
+          level3: "#12719e",
+          level4: "#0a4c6a",
+        }}
       />
     </Row>
   );
