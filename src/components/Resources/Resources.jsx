@@ -139,6 +139,18 @@ function Resources() {
             {Number(totalDownloads) > 0 && <span>{totalDownloads} total downloads 📥</span>}
           </strong>
         </p>
+        <p style={{ color: "#777", fontSize: "0.8rem" }}>
+          These are personal study notes licensed under{" "}
+          <a
+            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "#9c6ac7" }}
+          >
+            CC BY-NC-SA 4.0
+          </a>{" "}
+          — free to share and adapt for non-commercial use with credit, and adaptations must be shared under the same license.
+        </p>
 
         {/* Search + toggle row */}
         <div className="resource-toolbar">

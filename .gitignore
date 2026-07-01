@@ -30,3 +30,5 @@ Server/node_modules
 Server/config.js
 
 .DS_Store
+.claude
+.astro
