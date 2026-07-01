@@ -149,7 +149,7 @@ function Resources() {
           >
             CC BY-NC-SA 4.0
           </a>{" "}
-          — free to share and adapt for non-commercial use with credit.
+          — free to share and adapt for non-commercial use with credit, and adaptations must be shared under the same license.
         </p>
 
         {/* Search + toggle row */}
