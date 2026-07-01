@@ -31,3 +31,4 @@ Server/config.js
 
 .DS_Store
 .claude
+.astro
