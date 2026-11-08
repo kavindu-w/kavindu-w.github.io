@@ -1,6 +1,12 @@
 ---
 import VisitorCounter from "./VisitorCounter.jsx";
-const year = new Date().getFullYear();
+const builtAt = new Date();
+const year = builtAt.getFullYear();
+const builtAtLabel = new Intl.DateTimeFormat("en-GB", {
+  dateStyle: "medium",
+  timeStyle: "short",
+  timeZone: "UTC",
+}).format(builtAt);
 ---
 
 <footer class="footer">
@@ -11,6 +17,9 @@ const year = new Date().getFullYear();
       </div>
       <div class="col-md-4 footer-copywright">
         <VisitorCounter client:only="react" />
+        <small style="color:rgba(255,255,255,0.9)">
+          Last updated <time datetime={builtAt.toISOString()}>{builtAtLabel} UTC</time>
+        </small>
       </div>
       <div
         class="col-md-4 footer-copywright"
