@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&family=Noto+Sans+Sinhala:wght@500&display=swap");
 
 html,
 body {
@@ -7,7 +7,7 @@ body {
 
 body {
   margin: 0;
-  font-family: "Raleway", serif !important;
+  font-family: "Raleway", "Noto Sans Sinhala", serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: linear-gradient(to left, rgb(1 8 8), rgb(0 0 0));
@@ -340,6 +340,37 @@ button:focus {
   padding-top: 50px;
   font-size: 1.6em !important;
   text-align: left;
+}
+
+/* Research interests: one purple hue, fill strength encodes preference.
+   On this near-black page, a stronger fill stands out more, so strongest = most saturated. */
+.interest {
+  padding: 0.05em 0.35em;
+  border-radius: 0.25em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.interest-light {
+  background-color: #2a1f42;
+  color: #e6dcff;
+}
+
+.interest-medium {
+  background-color: #4f2f8f;
+  color: #ffffff;
+}
+
+.interest-strong {
+  background-color: #7c3aed;
+  color: #ffffff;
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.2em 0;
 }
 
 .home-about-social {
