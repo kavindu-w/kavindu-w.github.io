@@ -342,6 +342,30 @@ button:focus {
   text-align: left;
 }
 
+/* Research interests: one purple hue, fill strength encodes preference.
+   On this near-black page, a stronger fill stands out more, so strongest = most saturated. */
+.interest {
+  padding: 0.05em 0.35em;
+  border-radius: 0.25em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.interest-light {
+  background-color: #2a1f42;
+  color: #e6dcff;
+}
+
+.interest-medium {
+  background-color: #4f2f8f;
+  color: #ffffff;
+}
+
+.interest-strong {
+  background-color: #7c3aed;
+  color: #ffffff;
+}
+
 .home-about-social {
   text-align: center !important;
   padding-top: 25px;
